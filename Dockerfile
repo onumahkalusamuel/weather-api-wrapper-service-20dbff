@@ -1,5 +1,5 @@
 # Stage 1: Build frontend assets with Yarn
-FROM node:22 AS frontend-builder
+FROM node:20.11.1 AS frontend-builder
 
 # Set working directory to /app
 WORKDIR /app
@@ -12,7 +12,7 @@ RUN yarn install
 RUN yarn build:frontend
 
 # Stage 2: Install backend dependencies and copy assets
-FROM node:22 AS production
+FROM node:20.11.1 AS production
 
 # Set working directory to /app
 WORKDIR /app

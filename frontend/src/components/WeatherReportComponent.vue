@@ -27,5 +27,22 @@ watch(() => city, handleRequests);
       <h2>Weather Report for {{ localCity }}</h2>
     </div>
     <hr/>
+
+    <table v-if="weatherReport" border="1" cellpadding="5" width="100%">
+      <thead>
+      <tr>
+        <th>Date</th>
+        <th>Hours</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <tr v-for="a in weatherReport.days">
+        <td>{{ a.datetime }}</td>
+        <td v-html="a.hours.filter(h => parseInt(h.datetime.split('.')[0]) % 6 == 0).map(h => `<div>${h.datetime} => ${h.feelslike} <sup>o</sup></div>`).join(' ')"></td>
+      </tr>
+      </tbody>
+    </table>
   </div>
+
 </template>
